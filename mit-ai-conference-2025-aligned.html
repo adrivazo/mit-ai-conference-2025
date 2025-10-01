@@ -1309,11 +1309,9 @@
             document.querySelectorAll('.session-card').forEach(card => {
                 const sessionType = card.dataset.type;
                 if (sessionType && !activeFilters.has(sessionType)) {
-                    card.style.opacity = '0.2';
-                    card.style.pointerEvents = 'none';
+                    card.style.display = 'none';
                 } else {
-                    card.style.opacity = '1';
-                    card.style.pointerEvents = 'auto';
+                    card.style.display = '';
                 }
             });
         }

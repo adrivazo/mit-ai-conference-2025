@@ -20,15 +20,6 @@
             background: #f8f8f8;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Scroll offset for navigation */
-        #morning, #lunch, #afternoon, #awards {
-            scroll-margin-top: 80px;
-        }
-
         /* Hero Section */
         .hero-section {
             background: url('figma-assets/hero-image-3e3878.png') center/cover;
@@ -115,28 +106,17 @@
             text-decoration: none;
             transition: all 0.3s;
             cursor: pointer;
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .nav-pill::before {
-            content: '↓';
-            font-size: 12px;
-            opacity: 0.7;
         }
 
         .nav-pill:hover {
             background: #FF00FF;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 0, 255, 0.3);
         }
 
         /* Session Type Filters */
         .filter-section {
-            margin-bottom: 40px;
+            margin-bottom: 0;
             padding: 20px;
             background: white;
             border-radius: 12px;
@@ -340,6 +320,7 @@
             background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
             border-bottom: 3px solid #FF00FF;
             padding: 15px 20px;
+            margin-top: 20px;
             font-size: 14px;
             font-weight: 700;
             color: #333;
@@ -347,7 +328,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 20px auto 0 auto;
         }
 
         .track-headers .track-label {
@@ -456,33 +437,31 @@
         /* Location Indicator */
         .location-indicator {
             display: inline-block;
-            padding: 5px 12px;
-            background: #f0f0f0;
-            color: #666;
+            padding: 4px 12px;
             font-size: 10px;
             font-weight: 600;
-            border-radius: 15px;
+            border-radius: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid transparent;
+            letter-spacing: 0.6px;
+            transition: all 0.2s;
         }
 
         .location-indicator.grand {
-            background: rgba(71, 150, 255, 0.1);
-            color: #4796ff;
-            border-color: rgba(71, 150, 255, 0.2);
+            background: rgba(75, 123, 255, 0.15);
+            color: #4B7BFF;
+            border: 1.5px solid rgba(75, 123, 255, 0.3);
         }
 
         .location-indicator.hahn {
-            background: rgba(255, 0, 255, 0.08);
+            background: rgba(255, 0, 255, 0.15);
             color: #FF00FF;
-            border-color: rgba(255, 0, 255, 0.15);
+            border: 1.5px solid rgba(255, 0, 255, 0.3);
         }
 
         .location-indicator.lovelace {
-            background: rgba(78, 205, 196, 0.1);
+            background: rgba(78, 205, 196, 0.15);
             color: #4ECDC4;
-            border-color: rgba(78, 205, 196, 0.2);
+            border: 1.5px solid rgba(78, 205, 196, 0.3);
         }
 
         /* Session Badge */
@@ -538,7 +517,6 @@
             text-align: center;
             border-radius: 10px;
             transition: all 0.3s;
-            position: relative;
         }
 
         .break-slot:hover {
@@ -642,8 +620,9 @@
             <!-- Navigation -->
             <div class="nav-pills">
                 <a href="#morning" class="nav-pill">MORNING SESSIONS</a>
-                <a href="#lunch" class="nav-pill">LUNCH & WORKSHOPS</a>
+                <a href="#lunch" class="nav-pill">LUNCH</a>
                 <a href="#afternoon" class="nav-pill">AFTERNOON SESSIONS</a>
+                <a href="#workshops" class="nav-pill">WORKSHOPS</a>
                 <a href="#awards" class="nav-pill">AWARDS & CLOSING</a>
             </div>
 
@@ -687,8 +666,7 @@
                         <span class="duration">60 min</span>
                     </div>
                     <div style="grid-column: 2 / 5;" class="break-slot">
-                        <span class="location-indicator grand" style="position: absolute; top: 10px; right: 10px;">GRAND HALL</span>
-                        <span class="emoji" style="display: block;">☕</span>
+                        <span class="emoji">☕</span>
                         <span class="break-title">Registration + Breakfast</span>
                     </div>
                 </div>
@@ -702,6 +680,7 @@
                     <div style="grid-column: 2 / 5;" class="session-card" data-type="expert">
                         <div class="session-header-row">
                             <span class="session-badge badge-expert">EXPERT ROUND TABLES</span>
+                            <span class="location-indicator grand">GRAND HALL</span>
                         </div>
                         <div class="session-title">Concurrent Expert Sessions</div>
                         <div class="session-details">
@@ -1063,25 +1042,6 @@
                     </div>
                 </div>
 
-                <!-- 2:50 PM OpenAI Fireside -->
-                <div class="agenda-slot">
-                    <div class="time-column">
-                        <span class="time">2:50 PM</span>
-                        <span class="duration">15 min</span>
-                    </div>
-                    <div style="grid-column: 2 / 4;" class="session-card" data-type="fireside">
-                        <div class="session-header-row">
-                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
-                            <span class="location-indicator hahn">HAHN</span>
-                        </div>
-                        <div class="session-title">Research at OpenAI</div>
-                        <div class="session-details">
-                            <div class="speakers">Mark Chen (SVP Research, OpenAI)<br>
-                            Joanne Jang (Head of Model Behavior, OpenAI)</div>
-                            <div class="moderator">Host: Shivon Zilis (Neuralink, former OpenAI)</div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- 3:05 PM AI Build Week Demos -->
                 <div class="agenda-slot">
@@ -1349,20 +1309,11 @@
             document.querySelectorAll('.session-card').forEach(card => {
                 const sessionType = card.dataset.type;
                 if (sessionType && !activeFilters.has(sessionType)) {
-                    card.style.display = 'none';
+                    card.style.opacity = '0.2';
+                    card.style.pointerEvents = 'none';
                 } else {
-                    card.style.display = '';
-                }
-            });
-            
-            // Hide empty time slots (where all sessions are hidden)
-            document.querySelectorAll('.agenda-slot').forEach(slot => {
-                const visibleSessions = slot.querySelectorAll('.session-card:not([style*="display: none"])');
-                const hasBreak = slot.querySelector('.break-slot');
-                if (visibleSessions.length === 0 && !hasBreak) {
-                    slot.style.display = 'none';
-                } else {
-                    slot.style.display = '';
+                    card.style.opacity = '1';
+                    card.style.pointerEvents = 'auto';
                 }
             });
         }

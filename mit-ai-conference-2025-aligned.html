@@ -1306,12 +1306,28 @@
         });
         
         function applyFilters() {
+            // First, hide/show session cards based on filters
             document.querySelectorAll('.session-card').forEach(card => {
                 const sessionType = card.dataset.type;
                 if (sessionType && !activeFilters.has(sessionType)) {
                     card.style.display = 'none';
                 } else {
                     card.style.display = '';
+                }
+            });
+            
+            // Then hide agenda slots that have no visible session cards
+            document.querySelectorAll('.agenda-slot').forEach(slot => {
+                const sessionCards = slot.querySelectorAll('.session-card');
+                const visibleCards = Array.from(sessionCards).filter(card => 
+                    card.style.display !== 'none'
+                );
+                
+                // If this slot has session cards but none are visible, hide the entire slot
+                if (sessionCards.length > 0 && visibleCards.length === 0) {
+                    slot.style.display = 'none';
+                } else {
+                    slot.style.display = '';
                 }
             });
         }

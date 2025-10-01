@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIT AI Conference 2025 - Agenda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            z-index: 10;
+        }
+
+        .logo {
+            width: 330px;
+            height: auto;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-image: url('figma-assets/hero-image-3e3878.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #FF00FF;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #000000;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: #ffffff;
+            padding: 60px 20px;
+            min-height: 600px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Top Navigation Pills */
+        .top-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-pill {
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid #FF00FF;
+            color: #FF00FF;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-pill:hover {
+            background: #FF00FF;
+            color: #000000;
+        }
+
+        /* Session Type Legend */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .legend-label {
+            color: #666;
+            font-size: 13px;
+            margin-right: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #333333;
+            padding: 6px 12px;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .legend-item:hover {
+            background: #f0f0f0;
+        }
+
+        .legend-item.active {
+            border-color: currentColor;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .legend-item.active .legend-dot {
+            transform: scale(1.2);
+        }
+
+        /* Hidden session when filtered */
+        .session-hidden {
+            display: none !important;
+        }
+
+        .time-slot-container.hidden {
+            display: none !important;
+        }
+
+        /* Section Headers */
+        .section-header {
+            background: linear-gradient(90deg, #9B4DFF 0%, #FF00FF 100%);
+            padding: 12px 24px;
+            margin: 40px 0 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        /* Time Slot Container */
+        .time-slot-container {
+            display: grid;
+            grid-template-columns: 100px 37.5% 37.5% 20%;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            align-items: start;
+        }
+
+        .time-slot-container:hover {
+            background: #f0f1f3;
+            border-color: #FF00FF;
+        }
+
+        /* Time Column */
+        .time-column {
+            display: flex;
+            flex-direction: column;
+            color: #FF00FF;
+            font-weight: 600;
+            border-right: 2px solid #FF00FF;
+            padding-right: 20px;
+        }
+
+        .time {
+            font-size: 14px;
+        }
+
+        .duration {
+            font-size: 11px;
+            color: #888;
+            font-weight: 400;
+        }
+
+        /* Sessions Grid */
+        .sessions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .sessions-grid.two-track {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .sessions-grid.single {
+            grid-template-columns: 1fr;
+        }
+        
+        /* Adjust grid when only certain tracks have sessions */
+        .sessions-grid.hahn-only {
+            grid-template-columns: 1fr;
+        }
+        
+        .sessions-grid.grand-only {
+            grid-template-columns: 1fr;
+            margin-left: calc(33.33% + 10px);
+        }
+        
+        .sessions-grid.lovelace-only {
+            grid-template-columns: 1fr;
+            margin-left: calc(66.66% + 20px);
+        }
+
+        /* Session Card */
+        .session-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .session-card:hover {
+            box-shadow: 0 4px 12px rgba(255, 0, 255, 0.15);
+            border-color: #FF00FF;
+            transform: translateY(-2px);
+        }
+
+        .session-card.span-main {
+            grid-column: 1 / 3;
+        }
+        
+        /* Empty space placeholder */
+        .empty-slot {
+            visibility: hidden;
+        }
+        
+        /* Special layout for coffee + workshops */
+        .sessions-grid.coffee-workshops {
+            display: grid;
+            grid-template-columns: 75% 20%;
+            gap: 20px;
+        }
+
+        /* Location Indicator */
+        .location-indicator {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 3px 8px;
+            background: rgba(255, 0, 255, 0.1);
+            color: #FF00FF;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .location-indicator.grand {
+            background: rgba(71, 150, 255, 0.1);
+            color: #4796ff;
+        }
+
+        .location-indicator.lovelace {
+            background: rgba(78, 205, 196, 0.1);
+            color: #4ECDC4;
+        }
+        
+        .location-indicator.hahn {
+            background: rgba(255, 0, 255, 0.1);
+            color: #FF00FF;
+        }
+
+        /* Session Type Badge */
+        .session-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .badge-keynote {
+            background: #FF00FF;
+            color: #fff;
+        }
+
+        .badge-fireside {
+            background: #4B7BFF;
+            color: #FFF;
+        }
+
+        .badge-panel {
+            background: #00D4FF;
+            color: #000;
+        }
+
+        .badge-talk {
+            background: #FFD700;
+            color: #000;
+        }
+
+        .badge-demo {
+            background: #FF6B6B;
+            color: #FFF;
+        }
+
+        .badge-workshop {
+            background: #4ECDC4;
+            color: #000;
+        }
+
+        .badge-awards {
+            background: #FF4081;
+            color: #FFF;
+        }
+
+        .badge-opening {
+            background: #9B4DFF;
+            color: #FFF;
+        }
+
+        .badge-expert {
+            background: #6BCF7F;
+            color: #FFF;
+        }
+
+        /* Session Title */
+        .session-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        /* Session Details */
+        .session-details {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .session-details .speakers {
+            color: #333;
+            margin-top: 4px;
+        }
+
+        .session-details .moderator {
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .session-details .description {
+            color: #666;
+            margin-top: 8px;
+            font-size: 11px;
+        }
+
+        /* Break Slots */
+        .break-slot {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8e9ea 100%);
+            border: 2px dashed #ddd;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            grid-column: 1 / -1;
+        }
+
+        .break-slot .emoji {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .break-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #FF00FF;
+        }
+
+        /* Sticky Header Container */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+
+        /* Track Headers */
+        .track-headers {
+            display: grid;
+            grid-template-columns: 100px 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+            border-bottom: 3px solid #FF00FF;
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .track-headers .track-label {
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .track-headers .track-label.hahn {
+            color: #FF00FF;
+        }
+
+        .track-headers .track-label.grand {
+            color: #4796ff;
+        }
+
+        .track-headers .track-label.lovelace {
+            color: #4ECDC4;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background-image: url('figma-assets/footer-bg-133b71.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+
+        .footer-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-cta {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #FF00FF;
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .footer-cta:hover {
+            background: #ff4de8;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sessions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .track-headers {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-section {
+                top: 20px;
+                right: 20px;
+            }
+
+            .logo {
+                width: 200px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .time-slot-container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .time-column {
+                border-right: none;
+                border-bottom: 2px solid #FF00FF;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+
+            .sessions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo-section">
+        <img src="figma-assets/mit-ai-logo.svg" alt="MIT AI" class="logo">
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-overlay">
+            <h1 class="hero-title">FIRST LOOK AT THE 2025 AGENDA</h1>
+            <p class="hero-subtitle">
+                Explore AI's impact on productivity, healthcare, media, robotics, 
+                security, and entrepreneurship—plus live demos, awards, and 
+                networking. Additional workshops and sessions will be added 
+                shortly. The agenda is subject to change.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Top Navigation -->
+            <div class="top-nav">
+                <a href="#morning" class="nav-pill">MORNING SESSIONS</a>
+                <a href="#lunch" class="nav-pill">LUNCH</a>
+                <a href="#afternoon" class="nav-pill">AFTERNOON SESSIONS</a>
+                <a href="#workshops" class="nav-pill">WORKSHOPS</a>
+                <a href="#awards" class="nav-pill">AWARDS & CLOSING</a>
+            </div>
+
+            <!-- Session Type Legend -->
+            <div class="legend">
+                <span class="legend-label">Session Types:</span>
+                <div class="legend-item active" data-type="keynote" style="color: #FF00FF;">
+                    <span class="legend-dot" style="background: #FF00FF;"></span>
+                    <span>Keynote</span>
+                </div>
+                <div class="legend-item active" data-type="fireside" style="color: #4B7BFF;">
+                    <span class="legend-dot" style="background: #4B7BFF;"></span>
+                    <span>Fireside Chat</span>
+                </div>
+                <div class="legend-item active" data-type="panel" style="color: #00D4FF;">
+                    <span class="legend-dot" style="background: #00D4FF;"></span>
+                    <span>Panel</span>
+                </div>
+                <div class="legend-item active" data-type="talk" style="color: #FFD700;">
+                    <span class="legend-dot" style="background: #FFD700;"></span>
+                    <span>TIM Talk</span>
+                </div>
+                <div class="legend-item active" data-type="demo" style="color: #FF6B6B;">
+                    <span class="legend-dot" style="background: #FF6B6B;"></span>
+                    <span>Demo</span>
+                </div>
+                <div class="legend-item active" data-type="workshop" style="color: #4ECDC4;">
+                    <span class="legend-dot" style="background: #4ECDC4;"></span>
+                    <span>Workshop</span>
+                </div>
+                <div class="legend-item active" data-type="expert" style="color: #6BCF7F;">
+                    <span class="legend-dot" style="background: #6BCF7F;"></span>
+                    <span>Expert Tables</span>
+                </div>
+                <div class="legend-item active" data-type="awards" style="color: #FF4081;">
+                    <span class="legend-dot" style="background: #FF4081;"></span>
+                    <span>Awards</span>
+                </div>
+            </div>
+
+            <!-- Sticky Header with Track Labels -->
+            <div class="sticky-header">
+                <div class="track-headers">
+                    <div></div>
+                    <div class="track-label hahn">HAHN</div>
+                    <div class="track-label grand">GRAND HALL</div>
+                    <div class="track-label lovelace">LOVELACE</div>
+                </div>
+            </div>
+
+            <!-- Morning Sessions -->
+            <div id="morning">
+                <div class="section-header">REGISTRATION & MORNING SESSIONS</div>
+                
+                <!-- 8:00 AM Registration -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">8:00 AM</span>
+                        <span class="duration">60 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <div class="session-title">☕ Registration + Breakfast</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8:15 AM Expert Round Tables -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">8:15 AM</span>
+                        <span class="duration">45 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="session-badge badge-expert">EXPERT ROUND TABLES</span>
+                            <div class="session-title">Concurrent Expert Sessions</div>
+                            <div class="session-details">
+                                <div class="speakers">
+                                    <strong>A:</strong> Legal Frameworks for AI at Scale - Barath<br>
+                                    <strong>B:</strong> AI Pricing - Pranab Sharma<br>
+                                    <strong>C:</strong> Fundraising for AI Startups - E14<br>
+                                    <strong>D:</strong> Jen García<br>
+                                    <strong>E:</strong> Agentic Foundry
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9:00 AM Welcome -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">9:00 AM</span>
+                        <span class="duration">5 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <span class="session-badge badge-opening">MC WELCOME</span>
+                            <div class="session-title">Welcome & Opening Remarks</div>
+                            <div class="session-details">
+                                <div class="speakers">Jeff Applebaum (Siemens EDA) + Adela Jamal (Milemark Capital)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9:05 AM Opening Remarks -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">9:05 AM</span>
+                        <span class="duration">5 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <div class="session-title">Opening Remarks</div>
+                            <div class="session-details">
+                                <div class="speakers">Mark Gorenberg</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9:10 AM Opening Fireside -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">9:10 AM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">Opening Fireside</div>
+                            <div class="session-details">
+                                <div class="speakers">Guest: Chair, MIT Corporation</div>
+                                <div class="moderator">Host: Wendi Zhang (Egon Zehnder)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9:25 AM Refik Anadol -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">9:25 AM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <span class="session-badge badge-keynote">PRESENTATION + LIVE Q&A</span>
+                            <div class="session-title">Refik Anadol</div>
+                            <div class="session-details">
+                                <div class="speakers">Guest: Refik Anadol</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9:30-9:40 AM Workshop + Research Slam -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">9:30 AM</span>
+                        <span class="duration">30 min</span>
+                    </div>
+                    <div class="sessions-grid three-track">
+                        <div class="empty-slot"></div>
+                        <div class="session-card">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <span class="session-badge badge-demo">RESEARCH SLAM</span>
+                            <div class="session-title">Research Slam Presentations</div>
+                            <div class="session-details">
+                                <div class="speakers">4 x 5m Research Slam</div>
+                            </div>
+                        </div>
+                        <div class="session-card">
+                            <span class="location-indicator lovelace">LOVELACE</span>
+                            <span class="session-badge badge-workshop">WORKSHOP</span>
+                            <div class="session-title">Lighty</div>
+                            <div class="session-details">
+                                <div class="speakers">Richard Rabbat, Anthony Johnson, Mikey Kindler</div>
+                                <div class="duration">30 min</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10:15-11:00 AM TIM Talks -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">10:15 AM</span>
+                        <span class="duration">45 min</span>
+                    </div>
+                    <div class="sessions-grid hahn-grand">
+                        <div class="session-card">
+                            <span class="location-indicator hahn">HAHN</span>
+                            <span class="session-badge badge-talk">TIM TALK</span>
+                            <div class="session-title">AI Agents in Action: Redefining Productivity, Reasoning, and Human Collaboration</div>
+                            <div class="session-details">
+                                <div class="speakers">
+                                    • Sam Udotong (CTO & Co-founder, Fireflies AI)<br>
+                                    • Nancy Wang (CEO, Maigent)<br>
+                                    • Tod Hynes (CEO & Co-founder, Imbue)<br>
+                                    • Kanjun Qiu (VP, T-Mobile)
+                                </div>
+                                <div class="moderator">Moderator: Gene McKenna</div>
+                            </div>
+                        </div>
+                        <div class="session-card">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <span class="session-badge badge-talk">TIM TALK</span>
+                            <div class="session-title">AI for Health: Transforming Care, Data, and Decision-Making</div>
+                            <div class="session-details">
+                                <div class="speakers">
+                                    • Jean-Claude Saghbini (President, Lumeris)<br>
+                                    • Tom Hale (CEO, OURA)<br>
+                                    • Vivek Mohta (Founder & President, Manifold)
+                                </div>
+                                <div class="moderator">Moderator: Yousuf Khan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11:00 AM Coffee Break -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">11:00 AM</span>
+                        <span class="duration">30 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="break-slot span-main">
+                            <span class="emoji">☕</span>
+                            <span class="break-title">Coffee & Connect</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11:30 AM - 12:10 PM Panels -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">11:30 AM</span>
+                        <span class="duration">40 min</span>
+                    </div>
+                    <div class="sessions-grid hahn-grand">
+                        <div class="session-card">
+                            <span class="location-indicator hahn">HAHN</span>
+                            <span class="session-badge badge-panel">PANEL</span>
+                            <div class="session-title">AI in Action – From Code to Customer to Knowledge</div>
+                            <div class="session-details">
+                                <div class="speakers">
+                                    • Ramin Hasani (Founder/CEO, Liquid AI)<br>
+                                    • Tim Shi (Cofounder, Cresta AI)<br>
+                                    • Wen Sang (Cofounder/COO, Genspark.ai)
+                                </div>
+                                <div class="moderator">Moderator: Rocky Yu (Founder of AGI House)</div>
+                            </div>
+                        </div>
+                        <div class="session-card">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <span class="session-badge badge-talk">TIM TALK</span>
+                            <div class="session-title">AI in Digital Experiences, Personalization, and Media</div>
+                            <div class="session-details">
+                                <div class="speakers">
+                                    • Dr. Gavin S. P. Miller (Head of Research, Adobe)<br>
+                                    • Ziad Sultan (VP of Personalization, Spotify)<br>
+                                    • Barbara Peng (CEO, Business Insider)
+                                </div>
+                                <div class="moderator">Moderator: Luna Maroun (Adobe)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12:10 PM Robots -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">12:10 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">Robots: Beyond Imagination</div>
+                            <div class="session-details">
+                                <div class="speakers">Brad Porter (CEO, Collaborative Robotics)</div>
+                                <div class="moderator">Moderator: Sophia Luo (Greylock)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lunch -->
+            <div id="lunch">
+                <div class="section-header">LUNCH & WORKSHOPS</div>
+                
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">12:25 PM</span>
+                        <span class="duration">90 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="break-slot span-main">
+                            <span class="emoji">🍽️</span>
+                            <span class="break-title">Lunch Break</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1:00 PM BCG Workshop -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">1:00 PM</span>
+                        <span class="duration">30 min</span>
+                    </div>
+                    <div class="sessions-grid workshop-only">
+                        <div class="empty-slot"></div>
+                        <div class="session-card">
+                            <span class="location-indicator lovelace">LOVELACE</span>
+                            <span class="session-badge badge-workshop">WORKSHOP</span>
+                            <div class="session-title">BCG: How AI will disrupt Consumer Insights</div>
+                            <div class="session-details">
+                                <div class="speakers">Ksenia Moiseeva and Matt Kropp</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Afternoon Sessions -->
+            <div id="afternoon">
+                <div class="section-header">AFTERNOON SESSIONS</div>
+                
+                <!-- 1:55 PM Aparna -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">1:55 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-talk">TIM TALK</span>
+                            <div class="session-title">Product Innovation at Microsoft</div>
+                            <div class="session-details">
+                                <div class="speakers">Guest: Aparna Chennapragada (Chief Product Officer, Microsoft)</div>
+                                <div class="moderator">Host: Zeenat Patrawala</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2:10 PM Qasar -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">2:10 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">Applied Intuition</div>
+                            <div class="session-details">
+                                <div class="speakers">Qasar Younis (CEO, Applied Intuition)</div>
+                                <div class="moderator">Host: Shuja Keen</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2:25 PM Amjad -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">2:25 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">Going from 0-100M ARR in 6 months</div>
+                            <div class="session-details">
+                                <div class="speakers">Amjad Massad (CEO, Replit)</div>
+                                <div class="moderator">Host: Habib Haddad (E14)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2:40 PM Shishir -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">2:40 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">Leadership in AI Products</div>
+                            <div class="session-details">
+                                <div class="speakers">Shishir Mehrotra (CEO, Grammarly & Board Member Spotify)</div>
+                                <div class="moderator">Host: Wes Sonnenreich (Practera)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2:55 PM Wardah -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">2:55 PM</span>
+                        <span class="duration">25 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">AI in Healthcare Innovation</div>
+                            <div class="session-details">
+                                <div class="speakers">Wardah Inam, PhD (Founder & CEO, Overjet)</div>
+                                <div class="moderator">Host: Calvin Chin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3:20 PM Coffee + Workshops -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">3:20 PM</span>
+                        <span class="duration">30 min</span>
+                    </div>
+                    <div class="sessions-grid coffee-workshops">
+                        <div class="break-slot">
+                            <span class="emoji">☕</span>
+                            <span class="break-title">Coffee & Connect</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="session-card">
+                                <span class="location-indicator lovelace">LOVELACE</span>
+                                <span class="session-badge badge-workshop">WORKSHOP</span>
+                                <div class="session-title">Delve: The State of AI in Compliance</div>
+                            </div>
+                            <div class="session-card">
+                                <span class="location-indicator lovelace">LOVELACE</span>
+                                <span class="session-badge badge-workshop">WORKSHOP</span>
+                                <div class="session-title">Genspark: Vibe Coding Session</div>
+                                <div class="session-details">
+                                    <div class="speakers">30 min workshop</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3:50 PM Concurrent Sessions -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">3:50 PM</span>
+                        <span class="duration">40 min</span>
+                    </div>
+                    <div class="sessions-grid hahn-grand">
+                        <div class="session-card">
+                            <span class="location-indicator hahn">HAHN</span>
+                            <span class="session-badge badge-talk">TIM TALKS</span>
+                            <div class="session-title">AI in Voice, Customer Service, and Startup Innovation</div>
+                            <div class="session-details">
+                                <div class="speakers">
+                                    • Maria Belousova (Ex-CTO of Grubhub, Founder of Daydream)<br>
+                                    • Burkay Gur (Founder, Fal.AI)<br>
+                                    • Ankit Gordhandas (Co-founder, Pear – Voice AI)<br>
+                                    • Sinchan Banerjee (Co-founder, Pear - Product Leader, AI & Design)
+                                </div>
+                                <div class="moderator">Moderator: Teddy Lee (OpenAI)</div>
+                            </div>
+                        </div>
+                        <div class="session-card">
+                            <span class="location-indicator grand">GRAND HALL</span>
+                            <span class="session-badge badge-talk">TIM TALKS</span>
+                            <div class="session-title">Shipping Secure AI: Securing People, Apps, and Spaces</div>
+                            <div class="session-details">
+                                <div class="speakers">
+                                    • Fawad Ahmad (COO and CCO ADT)<br>
+                                    • Bhawna Singh (CTO of Okta)<br>
+                                    • Rania Khalaf (Chief AI Officer, WSO2)
+                                </div>
+                                <div class="moderator">Moderator: Rachel Lang (Cheyenne Ventures)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4:35 PM Hackathon Demos -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">4:35 PM</span>
+                        <span class="duration">30 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-demo">HACKATHON DEMOS</span>
+                            <div class="session-title">AI Build Week Demos</div>
+                            <div class="session-details">
+                                <div class="speakers">6 x 5m AI Build Week presentations</div>
+                                <div class="moderator">Host: Dima and Richard</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Awards & Closing -->
+            <div id="awards">
+                <div class="section-header">AWARDS & CLOSING CEREMONY</div>
+                
+                <!-- 5:05 PM Marzyeh -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">5:05 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">Academic Excellence in AI</div>
+                            <div class="session-details">
+                                <div class="speakers">Marzyeh Ghassemi (Associate Professor, MIT)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5:20 PM Sampriti -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">5:20 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">Innovation in Autonomous Systems</div>
+                            <div class="session-details">
+                                <div class="speakers">Sampriti Bhattacharyya (Founder & CEO, Navier)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5:35 PM Hemant -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">5:35 PM</span>
+                        <span class="duration">25 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-fireside">FIRESIDE CHAT</span>
+                            <div class="session-title">Venture Capital & AI</div>
+                            <div class="session-details">
+                                <div class="speakers">Hemant Taneja (CEO, General Catalyst)</div>
+                                <div class="moderator">Host: Adriana C. Vázquez Ortiz (Lilu) & Daniela Gorza (Maigent)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6:00 PM Awards Presentation -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">6:00 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-awards">AI AWARDS</span>
+                            <div class="session-title">AI Excellence Awards Presentation</div>
+                            <div class="session-details">
+                                <div class="speakers">
+                                    Recipients:<br>
+                                    • Hemant Taneja (CEO, General Catalyst)<br>
+                                    • Shishir Mehrotra (CEO, Grammarly)<br>
+                                    • Sampriti Bhattacharyya (Founder & CEO, Navier)<br>
+                                    • Marzyeh Ghassemi (Asst. Professor, MIT)
+                                </div>
+                                <div class="moderator">Host: Michelle Huang (TikTok) & Whitney Espich (MIT AA)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6:15 PM Competition Winners -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">6:15 PM</span>
+                        <span class="duration">10 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-awards">AWARD PRESENTATIONS</span>
+                            <div class="session-title">Research Slam & Hackathon Winners</div>
+                            <div class="session-details">
+                                <div class="speakers">Research Slam Finalists + Hackathon Finalists</div>
+                                <div class="moderator">Host: Rebecca Hwang (Kalei Ventures) & Arun Saigal (Thunkable)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6:20 PM Closing -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">6:20 PM</span>
+                        <span class="duration">15 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="session-card span-main">
+                            <span class="location-indicator">HAHN</span>
+                            <span class="session-badge badge-keynote">CLOSING CHAT</span>
+                            <div class="session-title">Closing Remarks</div>
+                            <div class="session-details">
+                                <div class="speakers">Emmett Shear - CEO of Softmax. Former CEO of Twitch and former interim CEO of OpenAI</div>
+                                <div class="moderator">Host: Rachel Lang & Luna Maroun</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6:20 PM Social Hour -->
+                <div class="time-slot-container">
+                    <div class="time-column">
+                        <span class="time">6:20 PM</span>
+                        <span class="duration">60 min</span>
+                    </div>
+                    <div class="sessions-grid single">
+                        <div class="break-slot span-main">
+                            <span class="emoji">🍦</span>
+                            <span class="break-title">Social Hour & Ice Cream</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer-section">
+        <div class="footer-content">
+            <h2 class="footer-title">Ready to Join Us?</h2>
+            <a href="#" class="footer-cta">Register Now</a>
+        </div>
+    </div>
+
+    <!-- Filtering JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all filter buttons
+            const filterButtons = document.querySelectorAll('.legend-item[data-type]');
+            const activeFilters = new Set(['keynote', 'fireside', 'panel', 'talk', 'demo', 'workshop', 'expert', 'awards']);
+            
+            // Add click handlers to filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filterType = this.dataset.type;
+                    
+                    // Toggle active state
+                    if (this.classList.contains('active')) {
+                        this.classList.remove('active');
+                        activeFilters.delete(filterType);
+                    } else {
+                        this.classList.add('active');
+                        activeFilters.add(filterType);
+                    }
+                    
+                    // Apply filters
+                    applyFilters();
+                });
+            });
+            
+            function applyFilters() {
+                // Get all session cards
+                const sessionCards = document.querySelectorAll('.session-card');
+                const timeSlots = document.querySelectorAll('.time-slot-container');
+                
+                // Filter each session card
+                sessionCards.forEach(card => {
+                    const badge = card.querySelector('.session-badge');
+                    let shouldShow = false;
+                    
+                    if (badge) {
+                        const badgeText = badge.textContent.toLowerCase();
+                        
+                        // Check each filter type
+                        if (activeFilters.has('keynote') && (badge.classList.contains('badge-keynote') || badgeText.includes('keynote') || badgeText.includes('q&a'))) {
+                            shouldShow = true;
+                        }
+                        if (activeFilters.has('fireside') && (badge.classList.contains('badge-fireside') || badgeText.includes('fireside'))) {
+                            shouldShow = true;
+                        }
+                        if (activeFilters.has('panel') && (badge.classList.contains('badge-panel') || badgeText.includes('panel'))) {
+                            shouldShow = true;
+                        }
+                        if (activeFilters.has('talk') && (badge.classList.contains('badge-talk') || badgeText.includes('talk'))) {
+                            shouldShow = true;
+                        }
+                        if (activeFilters.has('demo') && (badge.classList.contains('badge-demo') || badgeText.includes('demo') || badgeText.includes('slam') || badgeText.includes('hackathon'))) {
+                            shouldShow = true;
+                        }
+                        if (activeFilters.has('workshop') && (badge.classList.contains('badge-workshop') || badgeText.includes('workshop'))) {
+                            shouldShow = true;
+                        }
+                        if (activeFilters.has('expert') && (badge.classList.contains('badge-expert') || badgeText.includes('expert'))) {
+                            shouldShow = true;
+                        }
+                        if (activeFilters.has('awards') && (badge.classList.contains('badge-awards') || badgeText.includes('award'))) {
+                            shouldShow = true;
+                        }
+                    } else {
+                        // Check for special cases (breaks, opening remarks, etc.)
+                        const title = card.querySelector('.session-title');
+                        if (title) {
+                            const titleText = title.textContent.toLowerCase();
+                            if (titleText.includes('registration') || titleText.includes('opening remarks') || titleText.includes('welcome')) {
+                                shouldShow = activeFilters.has('keynote');
+                            }
+                        }
+                    }
+                    
+                    // Show/hide the card
+                    if (shouldShow) {
+                        card.classList.remove('session-hidden');
+                    } else {
+                        card.classList.add('session-hidden');
+                    }
+                });
+                
+                // Check time slots - hide if all sessions are hidden
+                timeSlots.forEach(slot => {
+                    const visibleCards = slot.querySelectorAll('.session-card:not(.session-hidden)');
+                    const breakSlot = slot.querySelector('.break-slot');
+                    
+                    if (visibleCards.length === 0 && !breakSlot) {
+                        slot.classList.add('hidden');
+                    } else {
+                        slot.classList.remove('hidden');
+                    }
+                });
+                
+                // Always show break slots
+                const breakSlots = document.querySelectorAll('.break-slot');
+                breakSlots.forEach(slot => {
+                    const parent = slot.closest('.time-slot-container');
+                    if (parent) {
+                        parent.classList.remove('hidden');
+                    }
+                });
+            }
+            
+            // Add "Select All" and "Clear All" functionality
+            const legendContainer = document.querySelector('.legend');
+            
+            // Create control buttons
+            const controlsDiv = document.createElement('div');
+            controlsDiv.style.cssText = 'display: flex; gap: 10px; margin-left: 20px;';
+            
+            const selectAllBtn = document.createElement('button');
+            selectAllBtn.textContent = 'Select All';
+            selectAllBtn.style.cssText = 'padding: 5px 15px; background: #6855ff; color: white; border: none; border-radius: 20px; cursor: pointer; font-size: 12px;';
+            
+            const clearAllBtn = document.createElement('button');
+            clearAllBtn.textContent = 'Clear All';
+            clearAllBtn.style.cssText = 'padding: 5px 15px; background: #ff00ff; color: white; border: none; border-radius: 20px; cursor: pointer; font-size: 12px;';
+            
+            selectAllBtn.addEventListener('click', function() {
+                filterButtons.forEach(btn => {
+                    btn.classList.add('active');
+                    activeFilters.add(btn.dataset.type);
+                });
+                applyFilters();
+            });
+            
+            clearAllBtn.addEventListener('click', function() {
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                activeFilters.clear();
+                applyFilters();
+            });
+            
+            controlsDiv.appendChild(selectAllBtn);
+            controlsDiv.appendChild(clearAllBtn);
+            legendContainer.appendChild(controlsDiv);
+        });
+    </script>
+</body>
+</html>

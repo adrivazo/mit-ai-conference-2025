@@ -594,6 +594,21 @@
             .track-headers { grid-template-columns: 80px 1fr; }
             .agenda-slot { grid-template-columns: 80px 1fr; }
             .filter-controls { margin-left: 0; margin-top: 10px; }
+            
+            /* Stack workshop sessions below lunch on mobile */
+            .agenda-slot .break-slot {
+                margin-bottom: 20px;
+            }
+            
+            .agenda-slot [style*="grid-column: 4"] {
+                grid-column: 2 !important;
+                margin-top: 20px;
+            }
+            
+            /* Hide the arrow on mobile since workshops appear below */
+            .break-slot div[style*="font-size: 12px"] {
+                display: none;
+            }
         }
     </style>
 </head>

@@ -1107,9 +1107,9 @@
                             <span class="session-badge badge-workshop">WORKSHOP</span>
                             <span class="location-indicator lovelace">LOVELACE</span>
                         </div>
-                        <div class="session-title">Delve Workshop</div>
+                        <div class="session-title">The State of AI in Compliance</div>
                         <div class="session-details">
-                            <div class="speakers">Delve</div>
+                            <div class="speakers">Selin Kocalar (Delve)</div>
                         </div>
                     </div>
                 </div>
@@ -1339,24 +1339,25 @@
             document.querySelectorAll('.session-card').forEach(card => {
                 const sessionType = card.dataset.type;
                 if (sessionType && !activeFilters.has(sessionType)) {
-                    card.style.display = 'none';
+                    card.style.setProperty('display', 'none', 'important');
                 } else {
-                    card.style.display = '';
+                    card.style.removeProperty('display');
                 }
             });
             
             // Then hide agenda slots that have no visible session cards
             document.querySelectorAll('.agenda-slot').forEach(slot => {
                 const sessionCards = slot.querySelectorAll('.session-card');
-                const visibleCards = Array.from(sessionCards).filter(card => 
-                    card.style.display !== 'none'
-                );
+                const visibleCards = Array.from(sessionCards).filter(card => {
+                    const computedStyle = window.getComputedStyle(card);
+                    return computedStyle.display !== 'none';
+                });
                 
                 // If this slot has session cards but none are visible, hide the entire slot
                 if (sessionCards.length > 0 && visibleCards.length === 0) {
-                    slot.style.display = 'none';
+                    slot.style.setProperty('display', 'none', 'important');
                 } else {
-                    slot.style.display = '';
+                    slot.style.removeProperty('display');
                 }
             });
         }

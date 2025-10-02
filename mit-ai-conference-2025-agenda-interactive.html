@@ -1335,13 +1335,20 @@
         });
         
         function applyFilters() {
+            const isMobile = window.innerWidth <= 768;
+            
             // First, hide/show session cards based on filters
             document.querySelectorAll('.session-card').forEach(card => {
                 const sessionType = card.dataset.type;
                 if (sessionType && !activeFilters.has(sessionType)) {
                     card.style.setProperty('display', 'none', 'important');
                 } else {
-                    card.style.removeProperty('display');
+                    // On mobile, explicitly set display block, on desktop remove the property
+                    if (isMobile) {
+                        card.style.setProperty('display', 'block', 'important');
+                    } else {
+                        card.style.removeProperty('display');
+                    }
                 }
             });
             
@@ -1357,7 +1364,12 @@
                 if (sessionCards.length > 0 && visibleCards.length === 0) {
                     slot.style.setProperty('display', 'none', 'important');
                 } else {
-                    slot.style.removeProperty('display');
+                    // On mobile, explicitly set display block, on desktop remove the property
+                    if (isMobile) {
+                        slot.style.setProperty('display', 'block', 'important');
+                    } else {
+                        slot.style.removeProperty('display');
+                    }
                 }
             });
         }

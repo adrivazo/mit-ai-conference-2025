@@ -595,18 +595,40 @@
             .agenda-slot { grid-template-columns: 80px 1fr; }
             .filter-controls { margin-left: 0; margin-top: 10px; }
             
-            /* Stack workshop sessions below lunch on mobile */
-            .agenda-slot .break-slot {
-                margin-bottom: 20px;
+            /* Stack all concurrent sessions vertically on mobile */
+            .agenda-slot {
+                display: flex;
+                flex-wrap: wrap;
             }
             
-            .agenda-slot [style*="grid-column: 4"] {
-                grid-column: 2 !important;
-                margin-top: 20px;
+            .agenda-slot .time-column {
+                flex: 0 0 80px;
+            }
+            
+            .agenda-slot .session-card,
+            .agenda-slot .break-slot {
+                flex: 1 0 calc(100% - 80px);
+                margin-left: 10px;
+                margin-bottom: 15px;
+            }
+            
+            /* Reset grid-column for all elements on mobile */
+            .agenda-slot > * {
+                grid-column: unset !important;
+            }
+            
+            /* Add spacing between stacked sessions in same time slot */
+            .agenda-slot .session-card + .session-card {
+                margin-top: 15px;
             }
             
             /* Hide the arrow on mobile since workshops appear below */
             .break-slot div[style*="font-size: 12px"] {
+                display: none;
+            }
+            
+            /* Hide empty grid spacers on mobile */
+            .agenda-slot > div:empty:not(.time-column) {
                 display: none;
             }
         }

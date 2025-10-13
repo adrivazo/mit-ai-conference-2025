@@ -3,52 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Webflow Embed</title>
+    <title>MIT AI Conference 2025 - Full Agenda</title>
     <style>
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
             background: #f5f5f5;
         }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .embed-container {
+        .agenda-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
             background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 100vh;
         }
-        .code-block {
-            background: #f8f8f8;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            padding: 15px;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            overflow-x: auto;
+        iframe {
+            width: 100%;
+            height: 4000px; /* Tall enough to show entire agenda */
+            border: none;
         }
     </style>
 </head>
 <body>
-    <h1>Test Embed for Webflow (401 characters)</h1>
-    
-    <div class="embed-container">
-        <h2>Copy this code to Webflow Custom Code Embed:</h2>
-        <div class="code-block">
-&lt;div style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; height: 0; padding-bottom: 250%; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"&gt;
-&lt;iframe src="https://adrivazo.github.io/mit-ai-conference-2025/mit-ai-conference-2025-agenda-interactive.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-        </div>
-        
-        <h2>Preview (GitHub Pages is now LIVE!):</h2>
-        <div style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; height: 0; padding-bottom: 250%; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-            <iframe src="https://adrivazo.github.io/mit-ai-conference-2025/mit-ai-conference-2025-agenda-interactive.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0" allowfullscreen></iframe>
-        </div>
+    <div class="agenda-container">
+        <iframe src="https://adrivazo.github.io/mit-ai-conference-2025/mit-ai-conference-2025-agenda-interactive.html" frameborder="0" allowfullscreen></iframe>
     </div>
 </body>
 </html>
